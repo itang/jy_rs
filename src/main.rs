@@ -48,7 +48,7 @@ fn browser_batch(config: Value) -> Result<()> {
         .into_iter()
         .flat_map(|x| x.iter().flat_map(|y| y.as_str().into_iter()));
     for (index, url) in urls.enumerate() {
-        println!("{:4}: open {}", index, url);
+        println!("{:4}: open {}", index + 1, url);
         browser_single_url(url)?;
     }
 
