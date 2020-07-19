@@ -68,6 +68,7 @@ fn browser_batch(config: Value) -> Result<()> {
 }
 
 fn browser_single_url(url: &str) -> Result<()> {
+    //TODO: Cross-system support
     Command::new("x-www-browser")
         .arg(url)
         .stderr(Stdio::null())
