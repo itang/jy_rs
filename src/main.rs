@@ -20,26 +20,28 @@ struct Opt {
     //verbose: u8,
 }
 
+impl Opt {
+    fn get_config_path(&self) -> Result<PathBuf> {
+        Ok(match &self.config {
+            Some(p) => p.clone(),
+            None => Path::new(&env::var("HOME")?)
+                .join("bin")
+                .join("jiayou.toml"),
+        })
+    }
+}
+
 fn main() -> Result<()> {
     let opt = Opt::from_args();
     println!("{:?}", opt);
 
-    let config_path = get_config_path(&opt)?;
+    let config_path = opt.get_config_path()?;
     println!("Read config from {:?}", config_path);
 
     let content = fs::read_to_string(config_path)?;
     let config = content.parse::<Value>()?;
 
     browser_batch(config)
-}
-
-fn get_config_path(opt: &Opt) -> Result<PathBuf> {
-    Ok(match &opt.config {
-        Some(p) => p.clone(),
-        None => Path::new(&env::var("HOME")?)
-            .join("bin")
-            .join("jiayou.toml"),
-    })
 }
 
 fn browser_batch(config: Value) -> Result<()> {

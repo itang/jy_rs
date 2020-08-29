@@ -1,6 +1,6 @@
 [package]
 name = "jy_rs"
-version = "0.2.2"
+version = "0.3.0"
 authors = ["itang <live.tang@gmail.com>"]
 edition = "2018"
 
