@@ -37,27 +37,18 @@ fn browser_batch(config: Value) -> Result<()> {
         browser_single_url(url)?;
     }
 
-    /*
-    let mut index = 0;
-    for urls in r["urls"].as_array() {
-        for url_value in urls {
-            for url in url_value.as_str() {
-                println!("{:4}: open {}", index, url);
-                browser(url)?;
-                index += 1;
-            }
-        }
-    }*/
-
     Ok(())
 }
 
 fn browser_single_url(url: &str) -> Result<()> {
-    //TODO: Cross-system support
+    //TBC: Cross-system support
+    webbrowser::open(url).unwrap();
+    Ok(())
+    /*
     Command::new("x-www-browser")
         .arg(url)
         .stderr(Stdio::null())
         .stdout(Stdio::null())
         .spawn()?;
-    Ok(())
+    Ok(())*/
 }

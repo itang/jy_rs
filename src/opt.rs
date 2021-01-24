@@ -8,7 +8,6 @@ pub trait IConfigPath {
     fn get_config_path(&self) -> Result<PathBuf>;
 }
 
-
 #[derive(StructOpt, Debug)]
 #[structopt(name = "jy_rs")]
 pub struct Opt {
