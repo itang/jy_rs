@@ -1,5 +1,5 @@
 use std::fs;
-use std::process::{Command, Stdio};
+//use std::process::{Command, Stdio};
 
 use anyhow::Result;
 use structopt::StructOpt;
@@ -41,7 +41,6 @@ fn browser_batch(config: Value) -> Result<()> {
 }
 
 fn browser_single_url(url: &str) -> Result<()> {
-    //TBC: Cross-system support
     webbrowser::open(url).unwrap();
     Ok(())
     /*
