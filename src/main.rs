@@ -18,7 +18,7 @@ fn main() -> Result<()> {
         Ok(())
     } else {
         let config_path = opt.get_config_path()?;
-        println!("Read config from {:?}", config_path);
+        println!("Read config from {config_path:?}");
 
         let content = fs::read_to_string(config_path)?;
         let config = content.parse::<Value>()?;
