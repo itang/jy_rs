@@ -11,7 +11,7 @@ mod opt;
 
 fn main() -> Result<()> {
     let opt = Opt::from_args();
-    println!("{:?}", opt);
+    println!("{opt:?}");
 
     if opt.dry_run {
         println!("dry run. exit!");
@@ -33,7 +33,7 @@ fn browser_batch(config: Value) -> Result<()> {
         .into_iter()
         .flat_map(|x| x.iter().flat_map(|y| y.as_str().into_iter()));
     for (index, url) in urls.enumerate() {
-        println!("{:4}: open {}", index + 1, url);
+        println!("{index:4}: open {url}", index = index + 1);
         browser_single_url(url)?;
     }
 
